@@ -1,10 +1,15 @@
-import { GlobalStyle } from './global'
+import Sidebar from './containers/Sidebar'
+import ContactList from './containers/ContactList'
+import { Container, GlobalStyle } from './styles'
 
 function App() {
   return (
     <>
       <GlobalStyle />
-      <h1>Meu Template com React, Redux e Styled Components 🚀</h1>
+      <Container>
+        <Sidebar />
+        <ContactList />
+      </Container>
     </>
   )
 }
