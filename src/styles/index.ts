@@ -1,4 +1,5 @@
 import styled, { createGlobalStyle } from 'styled-components'
+import vars from '../styles/vars'
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -22,7 +23,7 @@ export const MainContainer = styled.main`
 `
 
 export const Title = styled.h1`
-  color: #4e3706ff;
+  color: ${vars.primary};
   font-size: 64px;
   font-weight: 400;
   margin-bottom: 8px;

@@ -6,6 +6,19 @@ import Contact from '../../components/Contact'
 
 const ContactList = () => {
   const { itens } = useSelector((state: RootReducer) => state.contacts)
+  const { category } = useSelector((state: RootReducer) => state.filter)
+
+  const filterContacts = () => {
+    let filterContacts = itens
+
+    if (category !== 'Todos') {
+      filterContacts = filterContacts.filter((contact) => contact.category === category)
+    }
+
+    return filterContacts
+  }
+
+  const contacts = filterContacts()
 
   return (
     <MainContainer>
@@ -21,7 +34,7 @@ const ContactList = () => {
           </tr>
         </thead>
         <tbody>
-          {itens.map((t) => (
+          {contacts.map((t) => (
             <Contact
               key={t.id}
               fullName={t.fullName}

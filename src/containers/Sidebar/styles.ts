@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import vars from '../../styles/vars'
 
 export const AsideBar = styled.aside`
   background-color: #fff4c3ff;
@@ -10,7 +11,7 @@ export const CardButton = styled.button`
   justify-content: space-between;
   align-items: center;
   color: #fff;
-  background-color: #4e3706ff;
+  background-color: ${vars.primary};
   width: 100%;
   font-size: 16px;
   font-weight: bold;
