@@ -1,10 +1,15 @@
+import { useDispatch } from 'react-redux'
 import * as S from '@phosphor-icons/react'
 import { ActionButton, TableCell } from './styles'
 import ContactClass from '../../models/Contact'
 
+import { remove } from '../../store/reducers/contacts'
+
 type Props = ContactClass
 
-const Contact = ({ fullName, category, email, phoneNumber }: Props) => {
+const Contact = ({ fullName, category, email, phoneNumber, id }: Props) => {
+  const dispatch = useDispatch()
+
   function renderIcon() {
     switch (category) {
       case 'Família':
@@ -33,7 +38,7 @@ const Contact = ({ fullName, category, email, phoneNumber }: Props) => {
         <ActionButton>
           <S.PencilSimpleLineIcon size={16} />
         </ActionButton>
-        <ActionButton>
+        <ActionButton onClick={() => dispatch(remove(id))}>
           <S.TrashIcon size={16} />
         </ActionButton>
       </TableCell>

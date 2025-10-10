@@ -1,9 +1,12 @@
+import { useSelector } from 'react-redux'
 import { MainContainer, Title } from '../../styles'
 import { ContactsTable, Input, TableHeaderCell } from './styles'
-import contacts from '../../data/contacts'
+import type { RootReducer } from '../../store'
 import Contact from '../../components/Contact'
 
 const ContactList = () => {
+  const { itens } = useSelector((state: RootReducer) => state.contacts)
+
   return (
     <MainContainer>
       <Title>Agenda de Contatos</Title>
@@ -11,14 +14,14 @@ const ContactList = () => {
       <ContactsTable>
         <thead>
           <tr>
-            <TableHeaderCell>Nome</TableHeaderCell>
-            <TableHeaderCell>Email</TableHeaderCell>
-            <TableHeaderCell>N° de celular</TableHeaderCell>
-            <TableHeaderCell>Ações</TableHeaderCell>
+            <TableHeaderCell style={{ width: '30%' }}>Nome</TableHeaderCell>
+            <TableHeaderCell style={{ width: '30%' }}>Email</TableHeaderCell>
+            <TableHeaderCell style={{ width: '25%' }}>N° de celular</TableHeaderCell>
+            <TableHeaderCell style={{ width: '15%' }}>Ações</TableHeaderCell>
           </tr>
         </thead>
         <tbody>
-          {contacts.map((t) => (
+          {itens.map((t) => (
             <Contact
               key={t.id}
               fullName={t.fullName}

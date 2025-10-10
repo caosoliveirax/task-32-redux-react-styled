@@ -8,13 +8,14 @@ export const Input = styled.input`
   border: 1px solid #4e3706ff;
   border-radius: 8px;
   padding: 12px;
-  width: 60%;
+  width: 30%;
 `
 
 export const ContactsTable = styled.table`
   margin-top: 20px;
   text-align: start;
-  width: 100%;
+  table-layout: fixed;
+  width: 1080px;
   border-collapse: collapse;
 `
 
