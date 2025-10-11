@@ -1,21 +1,42 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { MainContainer, Title } from '../../styles'
 import { ContactsTable, Input, TableHeaderCell } from './styles'
 import type { RootReducer } from '../../store'
 import Contact from '../../components/Contact'
+import { changeTerm } from '../../store/reducers/filter'
 
 const ContactList = () => {
+  const dispatch = useDispatch()
   const { itens } = useSelector((state: RootReducer) => state.contacts)
-  const { category } = useSelector((state: RootReducer) => state.filter)
+  const { category, term } = useSelector((state: RootReducer) => state.filter)
 
   const filterContacts = () => {
-    let filterContacts = itens
+    let filteredContacts = itens
 
     if (category !== 'Todos') {
-      filterContacts = filterContacts.filter((contact) => contact.category === category)
+      filteredContacts = filteredContacts.filter((contact) => contact.category === category)
     }
 
-    return filterContacts
+    if (term && term.length > 0) {
+      const termLowerCase = term.toLowerCase()
+      const termDigitsOnly = term.replace(/\D/g, '')
+
+      filteredContacts = filteredContacts.filter((contact) => {
+        const nameAndEmailCheck =
+          contact.fullName.toLowerCase().includes(termLowerCase) ||
+          contact.email.toLowerCase().includes(termLowerCase)
+
+        if (termDigitsOnly.length > 0) {
+          const phoneCheck = contact.phoneNumber.replace(/\D/g, '').includes(termDigitsOnly)
+
+          return nameAndEmailCheck || phoneCheck
+        }
+
+        return nameAndEmailCheck
+      })
+    }
+
+    return filteredContacts
   }
 
   const contacts = filterContacts()
@@ -23,7 +44,14 @@ const ContactList = () => {
   return (
     <MainContainer>
       <Title>Agenda de Contatos</Title>
-      <Input id="search" name="search" type="text" placeholder="Buscar contato" />
+      <Input
+        value={term}
+        onChange={(event) => dispatch(changeTerm(event.target.value))}
+        id="search"
+        name="search"
+        type="text"
+        placeholder="Buscar contato"
+      />
       <ContactsTable>
         <thead>
           <tr>

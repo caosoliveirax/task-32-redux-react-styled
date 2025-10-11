@@ -1,11 +1,12 @@
 import styled from 'styled-components'
+import vars from '../../styles/vars'
 
 export const Input = styled.input`
   color: #666666;
   font-size: 16px;
   font-weight: 600;
   background-color: #ffffff86;
-  border: 1px solid #4e3706ff;
+  border: 1px solid ${vars.primary};
   border-radius: 8px;
   padding: 12px;
   width: 30%;
@@ -23,5 +24,5 @@ export const TableHeaderCell = styled.th`
   font-size: 22px;
   text-align: start;
   padding: 14px;
-  border-bottom: 2px solid #4e3706ff;
+  border-bottom: 2px solid ${vars.primary};
 `
