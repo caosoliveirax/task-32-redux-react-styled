@@ -1,4 +1,10 @@
 import { styled } from 'styled-components'
+import vars from '../../styles/vars'
+import { ActionButton } from '../../styles'
+
+type Props = {
+  $isFavorite?: boolean
+}
 
 export const TableCell = styled.td`
   vertical-align: middle;
@@ -14,23 +20,15 @@ export const TableCell = styled.td`
   }
 `
 
-export const ActionButton = styled.button`
-  width: 24px;
-  height: 24px;
-  margin-right: 12px;
-  background: none;
-  border: none;
-  cursor: pointer;
-  transition:
-    color 0.2s ease,
-    transform 0.3s ease;
-
-  svg {
-    margin-right: 0;
-  }
+export const FavoriteButton = styled(ActionButton)<Props>`
+  color: ${(props) => (props.$isFavorite ? vars.yellow : 'inherit')};
 
   &:hover {
-    color: #4e3706ff;
-    transform: scale(1.15);
+    color: ${vars.yellow};
+  }
+`
+export const DeleteButton = styled(ActionButton)<Props>`
+  &:hover {
+    color: ${vars.red};
   }
 `

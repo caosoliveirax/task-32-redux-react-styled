@@ -5,6 +5,7 @@ class Contact {
   category: Category
   email: string
   phoneNumber: string
+  isFavorite: boolean
   id: number
 
   constructor(
@@ -18,6 +19,7 @@ class Contact {
     this.category = category
     this.email = email
     this.phoneNumber = phoneNumber
+    this.isFavorite = false
     this.id = id
   }
 }

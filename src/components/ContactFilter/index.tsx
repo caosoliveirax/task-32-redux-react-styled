@@ -7,14 +7,14 @@ import type { Category } from '@utils/Contact'
 
 export type Props = {
   caption: string
-  counter: number
   icon: Icon
   category: Category | 'Todos'
 }
 
-const CardFilter = ({ caption, counter, category, icon: Icon }: Props) => {
+const CardFilter = ({ caption, category, icon: Icon }: Props) => {
   const dispatch = useDispatch()
   const filter = useSelector((state: RootReducer) => state.filter)
+  const contacts = useSelector((state: RootReducer) => state.contacts)
 
   const checkIsActive = () => {
     const sameCategory = filter.category === category
@@ -22,11 +22,22 @@ const CardFilter = ({ caption, counter, category, icon: Icon }: Props) => {
     return sameCategory
   }
 
+  const contactCounter = () => {
+    if (category === 'Todos') {
+      return contacts.itens.length
+    }
+    if (category === 'Favoritos') {
+      return contacts.itens.filter((contact) => contact.isFavorite).length
+    }
+    return contacts.itens.filter((contact) => contact.category === category).length
+  }
+
   const toFilter = () => {
     dispatch(changeFilter({ category }))
   }
 
   const active = checkIsActive()
+  const counter = contactCounter()
 
   return (
     <S.Card $active={active} onClick={toFilter}>

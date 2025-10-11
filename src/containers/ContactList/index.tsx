@@ -69,6 +69,7 @@ const ContactList = () => {
               email={t.email}
               phoneNumber={t.phoneNumber}
               category={t.category}
+              isFavorite={t.isFavorite}
               id={t.id}
             />
           ))}

@@ -1,13 +1,13 @@
 import { useDispatch } from 'react-redux'
 import * as S from '@phosphor-icons/react'
-import { ActionButton, TableCell } from './styles'
+import { TableCell, FavoriteButton, DeleteButton } from './styles'
+import { ActionButton } from '../../styles'
 import ContactClass from '../../models/Contact'
-
-import { remove } from '../../store/reducers/contacts'
+import { remove, toggleFavorite } from '../../store/reducers/contacts'
 
 type Props = ContactClass
 
-const Contact = ({ fullName, category, email, phoneNumber, id }: Props) => {
+const Contact = ({ fullName, category, email, phoneNumber, isFavorite, id }: Props) => {
   const dispatch = useDispatch()
 
   function renderIcon() {
@@ -32,15 +32,15 @@ const Contact = ({ fullName, category, email, phoneNumber, id }: Props) => {
       <TableCell>{email}</TableCell>
       <TableCell>{phoneNumber}</TableCell>
       <TableCell>
-        <ActionButton>
-          <S.StarIcon size={16} />
-        </ActionButton>
+        <FavoriteButton $isFavorite={isFavorite} onClick={() => dispatch(toggleFavorite(id))}>
+          {isFavorite ? <S.StarIcon weight="fill" size={16} /> : <S.StarIcon size={16} />}
+        </FavoriteButton>
         <ActionButton>
           <S.PencilSimpleLineIcon size={16} />
         </ActionButton>
-        <ActionButton onClick={() => dispatch(remove(id))}>
+        <DeleteButton onClick={() => dispatch(remove(id))}>
           <S.TrashIcon size={16} />
-        </ActionButton>
+        </DeleteButton>
       </TableCell>
     </tr>
   )

@@ -10,11 +10,11 @@ const Sidebar = () => {
         <S.PlusIcon weight="bold" size={44} />
       </CardButton>
       <Filter>
-        <CardFilter category="Todos" icon={S.ListIcon} counter={9} caption="Todos" />
-        <CardFilter category="Família" icon={S.UsersFourIcon} counter={2} caption="Família" />
-        <CardFilter category="Amigos" icon={S.UsersIcon} counter={3} caption="Amigos" />
-        <CardFilter category="Trabalho" icon={S.BriefcaseIcon} counter={2} caption="Trabalho" />
-        <CardFilter category="Favoritos" icon={S.StarIcon} counter={2} caption="Favoritos" />
+        <CardFilter category="Todos" icon={S.ListIcon} caption="Todos" />
+        <CardFilter category="Família" icon={S.UsersFourIcon} caption="Família" />
+        <CardFilter category="Amigos" icon={S.UsersIcon} caption="Amigos" />
+        <CardFilter category="Trabalho" icon={S.BriefcaseIcon} caption="Trabalho" />
+        <CardFilter category="Favoritos" icon={S.StarIcon} caption="Favoritos" />
       </Filter>
     </AsideBar>
   )

@@ -28,3 +28,23 @@ export const Title = styled.h1`
   font-weight: 400;
   margin-bottom: 8px;
 `
+
+export const ActionButton = styled.button`
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition:
+    color 0.2s ease,
+    transform 0.3s ease;
+
+  svg {
+    margin-right: 0;
+  }
+
+  &:hover {
+    transform: scale(1.15);
+  }
+`
