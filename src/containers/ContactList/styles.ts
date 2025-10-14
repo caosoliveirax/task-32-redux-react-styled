@@ -1,17 +1,6 @@
 import styled from 'styled-components'
 import vars from '../../styles/vars'
 
-export const Input = styled.input`
-  color: #666666;
-  font-size: 16px;
-  font-weight: 600;
-  background-color: #ffffff86;
-  border: 1px solid ${vars.primary};
-  border-radius: 8px;
-  padding: 12px;
-  width: 30%;
-`
-
 export const ContactsTable = styled.table`
   margin-top: 20px;
   text-align: start;

@@ -13,7 +13,7 @@ export const GlobalStyle = createGlobalStyle`
 export const Container = styled.div`
   display: grid;
   grid-template-columns: 240px auto;
-  background-color: #fff6ceff;
+  background-color: ${vars.background};
 `
 
 export const MainContainer = styled.main`
@@ -26,14 +26,26 @@ export const Title = styled.h1`
   color: ${vars.primary};
   font-size: 64px;
   font-weight: 400;
-  margin-bottom: 8px;
+`
+
+export const Input = styled.input`
+  color: #666666;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ffffff86;
+  border: 1px solid ${vars.primary};
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  width: 384px;
+  height: 40px;
 `
 
 export const ActionButton = styled.button`
   width: 24px;
   height: 24px;
   margin-right: 12px;
-  background: none;
+  background: ${vars.background};
   border: none;
   cursor: pointer;
   transition:
@@ -46,5 +58,25 @@ export const ActionButton = styled.button`
 
   &:hover {
     transform: scale(1.15);
+  }
+`
+export const SaveButton = styled(ActionButton)`
+  position: absolute;
+  top: 16px;
+  right: 0;
+  width: 152px;
+  height: 152px;
+  margin: 0;
+  color: #fff;
+  background: ${vars.primary};
+  border-radius: 8px;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.01);
+  }
+
+  &:active {
+    transform: scale(1.04);
   }
 `

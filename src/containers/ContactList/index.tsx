@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from 'react-redux'
-import { MainContainer, Title } from '../../styles'
-import { ContactsTable, Input, TableHeaderCell } from './styles'
+import { MainContainer, Title, Input } from '../../styles'
+import { ContactsTable, TableHeaderCell } from './styles'
 import type { RootReducer } from '../../store'
 import Contact from '../../components/Contact'
 import { changeTerm } from '../../store/reducers/filter'
