@@ -115,6 +115,13 @@ const contactsSlice = createSlice({
     remove: (state, action: PayloadAction<number>) => {
       state.itens = [...state.itens.filter((contacts) => contacts.id !== action.payload)]
     },
+    edit: (state, action: PayloadAction<Contact>) => {
+      const contactIndex = state.itens.findIndex((c) => c.id === action.payload.id)
+
+      if (contactIndex >= 0) {
+        state.itens[contactIndex] = action.payload
+      }
+    },
     toggleFavorite: (state, action: PayloadAction<number>) => {
       const contactIndex = state.itens.findIndex((c) => c.id === action.payload)
 
@@ -126,5 +133,5 @@ const contactsSlice = createSlice({
   }
 })
 
-export const { add, remove, toggleFavorite } = contactsSlice.actions
+export const { add, remove, edit, toggleFavorite } = contactsSlice.actions
 export default contactsSlice.reducer

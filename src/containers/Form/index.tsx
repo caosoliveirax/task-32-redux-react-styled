@@ -5,7 +5,7 @@ import { PlusIcon } from '@phosphor-icons/react'
 import { categories, type Category } from '@utils/Contact'
 import { add } from '../../store/reducers/contacts'
 import { Input, MainContainer, SaveButton } from '../../styles'
-import { FormContainer, MaskedInput, Option, Options, TitleForm } from './styles'
+import * as S from './styles'
 import Contact from '../../models/Contact'
 
 const Form = () => {
@@ -27,8 +27,8 @@ const Form = () => {
 
   return (
     <MainContainer>
-      <TitleForm>Novo contato</TitleForm>
-      <FormContainer onSubmit={addContactHandler}>
+      <S.TitleForm>Novo contato</S.TitleForm>
+      <S.FormContainer onSubmit={addContactHandler}>
         <Input
           onChange={({ target }) => setFullName(target.value)}
           value={fullName}
@@ -37,7 +37,7 @@ const Form = () => {
           placeholder="Nome"
           required
         />
-        <MaskedInput
+        <S.MaskedInput
           onAccept={(value) => setPhoneNumber(value)}
           value={phoneNumber}
           type="tel"
@@ -54,10 +54,10 @@ const Form = () => {
           placeholder="Email"
           required
         />
-        <Options>
+        <S.Options>
           <p>Categorias</p>
           {categories.map((cat) => (
-            <Option key={cat}>
+            <S.Option key={cat}>
               <input
                 onChange={({ target }) => setCategory(target.value as Category)}
                 type="radio"
@@ -67,13 +67,13 @@ const Form = () => {
                 checked={category === cat}
               />
               <label htmlFor={cat}>{cat}</label>
-            </Option>
+            </S.Option>
           ))}
-        </Options>
+        </S.Options>
         <SaveButton type="submit">
           <PlusIcon weight="bold" size={80} />
         </SaveButton>
-      </FormContainer>
+      </S.FormContainer>
     </MainContainer>
   )
 }
