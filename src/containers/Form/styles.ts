@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import vars from '../../styles/vars'
+import { IMaskInput } from 'react-imask'
 
 export const FormContainer = styled.form`
   position: relative;
@@ -40,4 +41,17 @@ export const Option = styled.div`
   input[type='radio' i] {
     cursor: pointer;
   }
+`
+
+export const MaskedInput = styled(IMaskInput)`
+  color: #666666;
+  font-size: 16px;
+  font-weight: 600;
+  background-color: #ffffff86;
+  border: 1px solid ${vars.primary};
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  width: 384px;
+  height: 40px;
 `

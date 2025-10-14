@@ -86,6 +86,32 @@ const contactsSlice = createSlice({
   name: 'contacts',
   initialState,
   reducers: {
+    add: (state, action: PayloadAction<Contact>) => {
+      const newFullName = action.payload.fullName.toLowerCase()
+      const newEmail = action.payload.email.toLowerCase()
+      const newPhone = action.payload.phoneNumber
+
+      const contactIsExist = state.itens.find(
+        (contact) =>
+          contact.fullName.toLowerCase() === newFullName ||
+          contact.email.toLowerCase() === newEmail ||
+          contact.phoneNumber.toLowerCase() === newPhone
+      )
+
+      if (contactIsExist) {
+        alert('Já existe um contato com este nome, e-mail ou telefone')
+      } else {
+        const lastContact = state.itens[state.itens.length - 1]
+        const newContact = new Contact(
+          action.payload.fullName,
+          action.payload.category,
+          action.payload.email,
+          action.payload.phoneNumber,
+          lastContact ? lastContact.id + 1 : 1
+        )
+        state.itens.push(newContact)
+      }
+    },
     remove: (state, action: PayloadAction<number>) => {
       state.itens = [...state.itens.filter((contacts) => contacts.id !== action.payload)]
     },
@@ -100,5 +126,5 @@ const contactsSlice = createSlice({
   }
 })
 
-export const { remove, toggleFavorite } = contactsSlice.actions
+export const { add, remove, toggleFavorite } = contactsSlice.actions
 export default contactsSlice.reducer
